@@ -705,7 +705,7 @@ Int32 UniPacket_decode(UniPacket * pack, const char* buff, uint32_t len)
 	ret = TarsInputStream_readString(is, pack->sFuncName, 6, true);    if (TARS_SUCCESS != ret) goto do_exit;
 	ret = TarsInputStream_readVectorChar (is, pack->sBuffer, 7, true); if (TARS_SUCCESS != ret) goto do_exit;
 	ret = TarsInputStream_readInt32(is, &pack->iTimeout, 8, false);    if (TARS_SUCCESS != ret) goto do_exit;
-	ret = TarsInputStream_readMap(is, pack->context, 9, false);        if (TARS_SUCCESS != ret) goto do_exit;
+	ret = TarsInputStream_readMap(is, &pack->context, 9, true);        if (TARS_SUCCESS != ret) goto do_exit;
 	ret = TarsInputStream_readMap(is, pack->status, 10, false);        if (TARS_SUCCESS != ret) goto do_exit;
 
 	TarsInputStream_reset(is);
